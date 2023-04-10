@@ -2,16 +2,18 @@ import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {setSort} from "../redux/slices/filterSlice";
 
+export const list = [
+    {name:'популярности(desc)', sortProperty:'rating'},
+    {name:'популярности(asc)', sortProperty:'-rating'},
+    {name:'цене(desc)', sortProperty:'price'},
+    {name:'цене(asc)', sortProperty:'-price'},
+    {name: 'алфавиту(desc)', sortProperty:'title'},
+    {name: 'алфавиту(asc)', sortProperty:'-title'}
+]
+
 function Sort() {
     const [open, setOpen] = React.useState(false)
-    const list = [
-        {name:'популярности(desc)', sortProperty:'rating'},
-        {name:'популярности(asc)', sortProperty:'-rating'},
-        {name:'цене(desc)', sortProperty:'price'},
-        {name:'цене(asc)', sortProperty:'-price'},
-        {name: 'алфавиту(desc)', sortProperty:'title'},
-        {name: 'алфавиту(asc)', sortProperty:'-title'}
-    ]
+
     const sort = useSelector((state)=>(state.filter.sort))
     const dispatch = useDispatch()
     const select =(id)=>{
