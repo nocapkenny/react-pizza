@@ -23,6 +23,17 @@ body {
     font-weight: 800;
 
   }
+  &__error-info{
+    margin: 60px auto;
+    width: 360px;
+    text-align: center;
+
+    h2{
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+  }
 
   &__items {
     display: grid;
