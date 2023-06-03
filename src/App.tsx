@@ -7,7 +7,7 @@ import Cart from "./pages/Cart";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import {Route, Routes} from "react-router-dom";
-import FullPizza from "./pages/FullPizza";
+import FullPizza from "./pages/FullPizza.tsx";
 
 
 function App() {
