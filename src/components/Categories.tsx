@@ -1,6 +1,12 @@
 import React from "react";
 
-function Categories({ value,onClickCategory }){
+type CategoriesProps = {
+    value:number;
+    onChangeCategory:any;
+
+}
+
+const Categories:React.FC<CategoriesProps> =({ value,onClickCategory })=>{
     const categories = ['Все','Мясные','Вегетарианские','Гриль','Острые','Закрытые']
 
     return(
@@ -9,7 +15,7 @@ function Categories({ value,onClickCategory }){
                 {categories.map((name,index)=>(
                     <li key={index}
                         onClick={()=>onClickCategory(index)}
-                        className={value==index ? 'active':''}>
+                        className={value===index ? 'active':''}>
                         {name}
                     </li>
                 ))}
@@ -18,5 +24,6 @@ function Categories({ value,onClickCategory }){
         </div>
     )
 }
+
 
 export default Categories

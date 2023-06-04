@@ -12,7 +12,7 @@ import {Link, useNavigate} from "react-router-dom";
 import {fetchPizzas, selectPizzaData} from "../redux/slices/pizzasSlice";
 
 
-const Home = () => {
+const Home:React.FC = () => {
 
     // const items = useSelector((state) => state.pizza.items)
     // const status = useSelector((state) => state.pizza.status)
@@ -24,7 +24,8 @@ const Home = () => {
         const category = categoryId > 0 ? `category=${categoryId}` : '';
         const search = searchValue ? `&search=${searchValue}` : '';
 
-        dispatch(fetchPizzas({
+        dispatch(//@ts-ignore
+            fetchPizzas({
             sortBy,
             order,
             category,
@@ -42,10 +43,10 @@ const Home = () => {
     const dispatch = useDispatch()
     const isSearch = React.useRef(false)
     const isMounted = React.useRef(false)
-    const onClickCategory = (id) => {
+    const onClickCategory = (id:number) => {
         dispatch(setCategoryId(id))
     }
-    const onChangePage = (number) => {
+    const onChangePage = (number:number) => {
         dispatch(setCurrentPage(number))
     }
     const navigate = useNavigate()

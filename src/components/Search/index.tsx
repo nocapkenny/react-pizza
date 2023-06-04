@@ -6,10 +6,10 @@ import {useDispatch} from "react-redux";
 import {setSearchValue} from "../../redux/slices/filterSlice";
 
 
-const Search = () => {
+const Search:React.FC = () => {
     const [value, setValue] = React.useState('')
     const dispatch = useDispatch()
-    const inputRef = React.useRef()
+    const inputRef = React.useRef(null)
     const setSearchClear = () => {
         dispatch(setSearchValue)
         setValue('');
