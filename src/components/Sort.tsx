@@ -7,6 +7,8 @@ type ListItem = {
     sortProperty:string;
 }
 
+
+
 export const list:ListItem[] = [
     {name: 'популярности(desc)', sortProperty: 'rating'},
     {name: 'популярности(asc)', sortProperty: '-rating'},
@@ -29,7 +31,7 @@ function Sort() {
 
     React.useEffect(() => {
         const handleClickOutside =(event)=>{
-            if (!event.composedPath().includes(sortRef.current)){
+            if (sortRef.current && !event.composedPath().includes(sortRef.current)){
                 setOpen(false)
             }
         }
