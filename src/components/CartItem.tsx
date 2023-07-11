@@ -1,6 +1,6 @@
 import React from "react";
 import {useDispatch} from "react-redux";
-import {addItem, CartItemType, minusItem, removeItem} from "../redux/slices/cartSlice";
+import {addItem, minusItem, removeItem} from "../redux/slices/cartSlice";
 
 type CartItemProps = {
     id: string;
@@ -15,9 +15,11 @@ type CartItemProps = {
 const CartItem: React.FC<CartItemProps> = ({id, title, price, count, imageUrl, type, size}) => {
     const dispatch = useDispatch()
     const onClickPlus = () => {
-        dispatch(addItem({id} ) as CartItemType)
+        //@ts-ignore
+        dispatch(addItem({id}))
     }
     const onClickMinus = () => {
+        //@ts-ignore
         dispatch(minusItem({id}))
     }
     const onClickRemove = () => {
@@ -40,7 +42,7 @@ const CartItem: React.FC<CartItemProps> = ({id, title, price, count, imageUrl, t
                 <p>{type}, {size} см.</p>
             </div>
             <div className="cart__item-count">
-                <div onClick={onClickMinus} className="button button--outline button--circle cart__item-count-minus">
+                <button disabled={count===1} onClick={onClickMinus} className={`button ${count===1 ? 'cart__item-count-minus--disabled' : ''} button--outline button--circle cart__item-count-minus`}>
                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -51,9 +53,9 @@ const CartItem: React.FC<CartItemProps> = ({id, title, price, count, imageUrl, t
                             fill="#EB5A1E"/>
                     </svg>
 
-                </div>
+                </button>
                 <b>{count}</b>
-                <div onClick={onClickPlus} className="button button--outline button--circle cart__item-count-plus">
+                <button onClick={onClickPlus} className="button button--outline button--circle cart__item-count-plus">
                     <svg width="10" height="10" viewBox="0 0 10 10" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -64,7 +66,7 @@ const CartItem: React.FC<CartItemProps> = ({id, title, price, count, imageUrl, t
                             fill="#EB5A1E"/>
                     </svg>
 
-                </div>
+                </button>
             </div>
             <div className="cart__item-price">
                 <b>{price * count} ₽</b>

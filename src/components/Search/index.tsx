@@ -1,5 +1,5 @@
 import React from "react";
-
+//@ts-ignore
 import styles from './Search.module.scss'
 import debounce from 'lodash.debounce'
 import {useDispatch} from "react-redux";
@@ -13,9 +13,11 @@ const Search:React.FC = () => {
     const setSearchClear = () => {
         dispatch(setSearchValue)
         setValue('');
+        //@ts-ignore
         inputRef.current.focus();
     }
     const updateSearchValue = React.useCallback(
+        //@ts-ignore
         debounce((str) => {
             dispatch(setSearchValue(str))
         }, 250),

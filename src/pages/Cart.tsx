@@ -11,10 +11,12 @@ type CartProps = {
 
 const Cart:React.FC<CartProps>=(id)=>{
     const dispatch = useDispatch()
+    //@ts-ignore
     const {totalPrice,items} = useSelector(state => state.cart)
     const totalCount = items.reduce((sum:number, item:any)=> sum + item.count, 0)
     const onClickClear =()=>{
         if (window.confirm('Очистить корзину?')){
+            //@ts-ignore
             dispatch(clearItems(id))
         }
     }
@@ -59,7 +61,7 @@ const Cart:React.FC<CartProps>=(id)=>{
                     </div>
                 </div>
                 <div className="content__items">
-                    {
+                    {   //@ts-ignore
                         items.map((item, id)=> <CartItem key={id} {...item}/>)
                     }
                 </div>

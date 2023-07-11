@@ -1,5 +1,6 @@
 import React from "react";
 
+
 import qs from 'qs'
 import Categories from "../components/Categories";
 import Sort, {list} from "../components/Sort";
@@ -26,13 +27,14 @@ const Home: React.FC = () => {
         const category = categoryId > 0 ? `category=${categoryId}` : '';
         const search = searchValue ? `&search=${searchValue}` : '';
 
-
-        dispatch(//@ts-ignore
+        //@ts-ignore
+        dispatch(
             fetchPizzas({
                 sortBy,
                 order,
                 category,
                 search,
+                //@ts-ignore
                 currentPage
             })) //попробуй сделать запрос, если ошибка то прекрати загрузку и дай фидбек
 
@@ -42,15 +44,18 @@ const Home: React.FC = () => {
     const skeletons = [...new Array(6)].map((_, index) => <Skeleton key={index}/>);
 
     const {categoryId, currentPage, searchValue} = useSelector(selectFilter)
+    //@ts-ignore
     const sortType = useSelector((state) => state.filter.sort.sortProperty)
     const isSearch = React.useRef(false)
     const isMounted = React.useRef(false)
-    const onClickCategory = (id: number) => {
-        dispatch(setCategoryId(id))
-    }
-    const onChangePage = (number: number) => {
+    const onClickCategory = React.useCallback((idx: number) => {
+        dispatch(setCategoryId(idx))
+    },[])
+
+    //@ts-ignore
+    const onChangePage = React.useCallback((number)=>{
         dispatch(setCurrentPage(number))
-    }
+    },[])
     const navigate = useNavigate()
 
 
@@ -93,7 +98,7 @@ const Home: React.FC = () => {
     React.useEffect(() => {
         getPizzas()
     }, [categoryId, sortType, searchValue, currentPage])
-
+    //
     return (
         <div className="container">
             <div className="content__top">

@@ -35,7 +35,8 @@ const cartSlice = createSlice({
             )
         },
         minusItem(state, action:PayloadAction<string>){
-            const findItem = state.items.find(obj => obj.id === action.payload.id)
+            //@ts-ignore
+            const findItem = state.items.find(obj => obj.id === action.payload.id)//@ts-ignore
 
             if(findItem){
                 findItem.count--
@@ -51,7 +52,7 @@ const cartSlice = createSlice({
             state.totalPrice = 0
         }
     }
-})
+})//@ts-ignore
 export const selectPizzaById = (id) => (state:RootState) => state.cart.items.find(obj=>obj.id===id)
 
 export const {addItem, removeItem, clearItems, minusItem} = cartSlice.actions

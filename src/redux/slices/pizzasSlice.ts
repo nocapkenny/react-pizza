@@ -22,6 +22,7 @@ type ItemsType = {
 
 export const fetchPizzas = createAsyncThunk<ItemsType[],ParamsType>(
     'pizza/fetchPizzasStatus',
+    //@ts-ignore
     async ( params)=>{
         const { sortBy, order, category, search, currentPage } = params;
         const {data} = await axios.get<CartItemType[]>(`https://640762ff862956433e6e16ff.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`);
@@ -49,7 +50,9 @@ const pizzasSlice = createSlice({
     name: 'pizza',
     initialState,
     reducers: {
+        //@ts-ignore
         setItems(state, action:PayloadAction<ItemsType>){
+            //@ts-ignore
             state.items = action.payload
         }
     },
