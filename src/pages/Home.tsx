@@ -3,14 +3,16 @@ import React from "react";
 
 import qs from 'qs'
 import Categories from "../components/Categories";
-import Sort, {list} from "../components/Sort";
+import Sort from "../components/Sort";
 import Skeleton from "../components/PizzaBlock/PizzaSkeleton";
 import PizzaBlock from "../components/PizzaBlock/PizzaBlock";
 import Pagination from "../components/Pagination";
-import {useDispatch, useSelector} from "react-redux";
-import {selectFilter, setCategoryId, setCurrentPage, setFilters} from "../redux/slices/filterSlice";
+import {useSelector} from "react-redux";
+import {setCategoryId, setCurrentPage} from "../redux/filter/slice";
+import {selectFilter} from '../redux/filter/selectors'
 import {useNavigate} from "react-router-dom";
-import {fetchPizzas, selectPizzaData} from "../redux/slices/pizzasSlice";
+import {fetchPizzas} from "../redux/pizza/asyncActions";
+import {selectPizzaData} from "../redux/pizza/selectors";
 import {useAppDispatch} from "../redux/store";
 
 
