@@ -23,6 +23,8 @@ const Home: React.FC = () => {
     const {items, status} = useSelector(selectPizzaData)
     const dispatch = useAppDispatch()
 
+
+
     const getPizzas = async () => {
         const order = sortType.includes('-') ? 'asc' : 'desc';
         const sortBy = sortType.replace('-', '');

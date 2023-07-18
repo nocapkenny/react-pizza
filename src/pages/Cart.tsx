@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import CartItem from "../components/CartItem";
 import {clearItems} from "../redux/cart/slice";
 import CartEmpty from "../components/CartEmpty";
+import {getCartFromLS} from "../utils/getCartFromLS";
 
 type CartProps = {
     id:string;
